@@ -1,0 +1,6 @@
+{
+    "Admin": true,
+    "Users": true,
+    "Permissions": true,
+    "Roles": true
+}

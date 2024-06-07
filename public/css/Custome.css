@@ -1,0 +1,77 @@
+span.required{color: #f00;}
+span.select2-selection__clear {
+    display: none;
+}
+.table-responsive table{border: 1px solid #dbdfea;}
+.table-responsive table tr:hover{
+    background: #f8f9fc;
+    box-shadow: 0 0 10px -4px rgb(54 74 99 / 20%);
+}
+.dropdown-menu-end {
+    --bs-position: auto;
+}
+.role_form .preview-title{line-height: 1.2rem;}
+.invalid{color: #e85347;font-size: 11px;font-style: italic;}
+.border_radius{border-radius: 50%;}
+.bg_conver{background-size: cover !important;}
+.plugin_remove{
+    position: absolute;
+    right: 8px;
+    top: 5px;
+}
+.size_45rem{font-size: 4.5rem !important;}
+
+.tox-tinymce svg, .tox .tox-split-button__chevron svg {
+    height: auto;
+    max-width: 100%;
+}
+.tox-statusbar__branding{display: none;}
+
+/*Checkbox popup image editor */
+.nk-file-icon-link .custom-control-input:checked ~ .custom-control-label:before {
+    border-color: #fff;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #0fac81;
+    background-color: #0fac81;
+    box-shadow: none;
+}
+.nk-file-icon-link .custom-control-label::before {
+    border-width: 1px;
+    top: 0.3rem;
+    left: 0.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.nk-file-icon-link .custom-control-input:checked ~ .custom-control-label::after {
+    opacity: 1;
+}
+
+.nk-file-icon-link .custom-control-label:after {
+    content: "\e9bd";
+}
+
+.nk-file-icon-link .custom-control-label::after {
+    top: 0.3rem;
+    left: 0.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.edit_seo_meta {
+    position: absolute;
+    top: 12px;
+    right: 25px;
+}
+.txt_black{color: #000;}
+#accordion .card-title, #accordion .accordion-head p {
+    margin-bottom: 0;
+}
+
+.nk-content-body .table-responsive {
+    min-height: 220px;
+}
+#accordion .card-title{font-size: 1.1rem;}
+.span_edit{cursor: pointer;}
