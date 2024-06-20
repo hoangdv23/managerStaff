@@ -30,6 +30,10 @@ class UsersServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(
+            \Modules\Users\Repositories\UserRepositoryInterface::class,
+            \Modules\Users\Repositories\UserRepository::class
+        );
     }
 
     /**

@@ -94,24 +94,12 @@ class IndexPage extends DataTableComponent
 	}
 
 	public function deleteItem($menuId) {
-		//check mode action website
-		$modeActionWebsite = env('MODE_ACTION_WEBSITE', true);
-		if ($modeActionWebsite == false) {
-			session()->flash('error', __('This function is not working demo system'));
-			return redirect(route('routes'));
-		}
-
 		$permission = Role::findOrFail($menuId);
 		if ($permission) {
 			$permission->delete();
-			$this->emit('msgSuccess', __('Successfully delete.'));
+			$this->dispatch('msgSuccess', __('Successfully delete.'));
 		} else {
 			session()->flash('msgError', __('False delete.'));
 		}
 	}
-
-    // public function render()
-    // {
-    //     return view('roles::livewire.index-page');
-    // }
 }

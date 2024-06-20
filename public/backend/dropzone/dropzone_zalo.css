@@ -1,0 +1,26 @@
+.zalo_oa_chat li {
+    cursor: pointer;
+    position: relative;
+}
+.zalo_oa_chat input#input_image_zalo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity:0;
+    width: 20px;
+    cursor: pointer;
+}
+.relative{position: relative;}
+.chat-content .chat-bubble img{
+    max-width: 30% !important;
+}
+
+.zalo_oa_chat input#input_file_zalo {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    opacity:0;
+    width: 20px;
+    cursor: pointer;
+}
+#emojikb-maindiv{z-index: 9 !important;}

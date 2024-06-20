@@ -47,33 +47,30 @@ if (!function_exists('has_child_permission')) {
 }
 
 if (!function_exists('action_modal')) {
-    function action_modal($content, $modalId, $actionModal, $flashMessage = null, $flashType = null)
-    {
-        $content->emit('refreshCustomerLinksTable');
-        $content->dispatchBrowserEvent(
-            'modal',
-            [
-                'modalId' => $modalId,
-                'actionModal' => $actionModal,
-                'flashMessage' => $flashMessage,
-                'flashType' => $flashType,
-            ]
-        );
-    }
+	function action_modal($content, $modalId, $actionModal, $flashMessage = null, $flashType = null) {
+		$content->dispatch('refreshCustomerLinksTable');
+		$content->dispatch('actionModalDispatch',
+			[
+				'modalId' => $modalId,
+				'actionModal' => $actionModal,
+				'flashMessage' => $flashMessage,
+				'flashType' => $flashType,
+			]);
+	}
 }
 
 if (!function_exists('getUserInfo')) {
     function getUserInfo()
     {
-        return \Auth::guard('admin')->user();
+        return \Auth::guard('web')->user();
     }
 }
 
 if (!function_exists('isSuperAdmin')) {
     function isSuperAdmin()
     {
-        $userInfo = \Auth::guard('admin')->user();
-        if ($userInfo->hasRole('super-admin')) {
+        $userInfo = \Auth::guard('web')->user();
+        if ($userInfo->hasRole('super-administrator')) {
             return true;
         } else {
             return false;
@@ -85,8 +82,8 @@ if (!function_exists('isSuperAdmin')) {
 if (!function_exists('isSuperAdminOrIsLeader')) {
     function isSuperAdminOrIsLeader()
     {
-        $userInfo = \Auth::guard('admin')->user();
-        if ($userInfo->hasRole('super-admin') || !empty($userInfo->current_team_id)) {
+        $userInfo = \Auth::guard('web')->user();
+        if ($userInfo->hasRole('super-administrator') || !empty($userInfo->current_team_id)) {
             return true;
         } else {
             return false;

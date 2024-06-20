@@ -16,13 +16,11 @@
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
                                         {{--<li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>--}}
-                                        {{-- @can('role-create') --}}
-                                        <li class="nk-block-tools-opt">
+                                        @can('role-create')
                                             <div class="drodown">
                                                 <a href="{{ route('roles.create') }}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
                                             </div>
-                                        </li>
-                                        {{-- @endcan --}}
+                                        @endcan
                                     </ul>
                                 </div>
                             </div>

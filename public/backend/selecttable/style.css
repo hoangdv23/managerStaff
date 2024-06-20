@@ -1,0 +1,78 @@
+
+.box_media::after {
+  content: "non-selectable";
+}
+.box_media.ui-selectable, .box_media.selectable {
+  color: #fff;
+  background-color: #aaa;
+}
+.box_media::after {
+  font-size: 12px;
+  font-family: "Roboto Mono";
+}
+.box_media.ui-selecting {
+  background-color: #9C27B0;
+}
+.box_media.ui-selected {
+  background-color: #673AB7;
+}
+.box_media.ui-deselecting {
+  background-color: #E91E63;
+}
+.box_media.floated {
+  box_media-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.ui-selectable::after {
+  content: "selectable";
+}
+
+.ui-selecting::after {
+  content: "selecting";
+}
+
+.ui-selected::after {
+  content: "selected";
+}
+
+.ui-deselecting::after {
+  content: "deselecting";
+}
+
+.ui-multiple {
+  cursor: crosshair;
+}
+
+.key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.key .box_media {
+  padding: 0;
+  font-size: 13px;
+  flex-grow: 1;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  color: #333;
+  outline: medium none;
+  text-decoration: none;
+}
+
+.fa {
+  font-size: 21px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.dg, .dg .c input[type=text] {
+  font: 11px "Roboto Mono", sans-serif;
+}
+
+.dg .property-name {
+  overflow: visible;
+}

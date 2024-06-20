@@ -97,7 +97,7 @@ class CreatePage extends Component
 		}
 		// Else commit the queries
 		DB::commit();
-		return redirect(route('roles'));
+		return redirect(route('roles.index'));
 	}
     public function render()
     {

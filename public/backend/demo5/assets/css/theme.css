@@ -1,0 +1,15 @@
+@media (min-width: 1540px){
+    .nk-sidebar {
+        width: 340px;
+    }
+    .nk-sidebar + .nk-wrap {
+        padding-left: 340px;
+    }
+    .nk-sidebar + .nk-wrap > .nk-header-fixed {
+        left: 340px;
+    }
+}
+
+.font-12{
+    font-size: 1.2rem;
+}

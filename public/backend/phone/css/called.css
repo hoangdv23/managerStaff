@@ -1,0 +1,214 @@
+.row-called {
+    margin: 0 auto;
+    width: 180px;
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Exo";
+}
+.digit-called, .dig-called {
+    /*  transition: all 0.3s ease-in-out;*/
+    font-weight: 500;
+    /* width: ; */
+    /* height: 60px;
+    width: 60px; */
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    /* float: left;
+    padding: 10px 30px;
+    width: 30px;
+    font-size: 2rem;
+    cursor: pointer; */
+}
+.sub-called {
+    font-size: 0.8rem;
+    color: grey;
+}
+.container-called {
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    height: 520px;
+    text-align: center;
+}
+#output-called {
+    width: 290px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px solid #c7c8cc;
+    background-color: #f5f7f8;
+    border-radius: 10px;
+    font-family: "Exo";
+    font-size: 2rem;
+    height: 60px;
+    font-weight: bold;
+    color: #000;
+    outline: none;
+}
+#call-called {
+    display: inline-block;
+    background-color: #66bb6a;
+    padding: 4px 30px;
+    margin: 10px;
+    color: white;
+    border-radius: 4px;
+    /* float: left; */
+    cursor: pointer;
+}
+.botrow-called {
+    margin: 0 auto;
+    width: 280px;
+    clear: both;
+    text-align: center;
+    font-family: "Exo";
+}
+.digit-called:active, .dig-called:active {
+    background-color: #e6e6e6;
+}
+.digit-called:hover, .dig-called:hover {
+    background-color: #f5f6fa;
+}
+#call-called:hover {
+    background-color: #81c784;
+}
+.dig-called {
+    float: left;
+    padding: 10px 20px;
+    margin: 10px;
+    width: 30px;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .container-called {
+        /* margin-left: ; */
+    }
+}
+.call-screen {
+    background-color: white;
+    /* margin:auto auto; */
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.2);
+}
+.call-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    line-height: 40px;
+    padding: 5px 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03), 0 10px 40px rgba(0, 0, 0, 0.09);
+    /* display:table; */
+}
+@keyframes calling {
+    0% {
+        opacity: .2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+@keyframes calling2 {
+    0% {
+        box-shadow: 0px 0px 0px 0px rgba(62, 149, 255, 0.09);
+    }
+    50% {
+        box-shadow: 0px 0px 0px 5px rgba(62, 149, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 15px rgba(62, 149, 255, 0.5);
+    }
+}
+.caller-id span {
+    animation-name: calling;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+.caller-id span:nth-child(2) {
+    animation-delay: .2s;
+}
+.caller-id span:nth-child(3) {
+    animation-delay: .4s;
+}
+.caller-id, .caller-time {
+    display: table-cell;
+}
+.caller-id {
+    width: 50%;
+}
+.caller-time {
+    width: 40%;
+    text-align: right;
+}
+.caller-img {
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    overflow: hidden;
+    margin: 15% auto;
+    border: 1px solid rbga(0, 0, 0, 0.1);
+    animation: calling2 0.8s ease-in-out infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.caller-img img {
+    width: 100%;
+}
+.caller-details {
+    width: 100%;
+    margin-top: -35px;
+    text-align: center;
+}
+.caller-details p {
+    margin-top: -15px;
+}
+.caller-control {
+    width: 100%;
+    text-align: center;
+    margin: 40px -25px;
+}
+.call-icon {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: black;
+    height: 50px;
+    width: 50px;
+    margin-left: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+    transition: 0.5s ease-in-out;
+}
+.call-icon:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.33), 0 10px 40px rgba(0, 0, 0, 0.39);
+    transition: 0.5s ease-in-out;
+}
+.call-drop {
+    color: red;
+}
+.agent-search-dialog {
+    padding: 10px 20px;
+    display: none;
+}
+.footer-call {
+    background-color: #EEEEEE;
+    height: 70px;
+}
+.btn-edit-customer {
+    height: 35px;
+    width: 35px;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 50%;
+}

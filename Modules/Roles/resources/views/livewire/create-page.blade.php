@@ -66,14 +66,15 @@
                             <div class="row g-3">
                                 <div class="col-lg-12 offset-lg-12">
                                     <div class="form-group mt-2 text-center">
-                                        <button type="submit" class="btn btn-primary">
-                                        <em class="icon ni ni-save"></em>
-                                        <span>{{ __('Update') }}</span>
-                                        </button>
                                         <a href="{{ route('roles.index') }}" class="btn btn-light">
                                             <em class="icon ni ni-back-arrow-fill"></em>
                                             <span>{{ __('Back') }}</span>
                                         </a>
+                                        <button type="submit" class="btn btn-primary">
+                                        <em class="icon ni ni-save"></em>
+                                        <span>{{ __('Update') }}</span>
+                                        </button>
+                                        
                                     </div>
                                 </div>
                             </div>

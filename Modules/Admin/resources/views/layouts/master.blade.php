@@ -14,9 +14,9 @@
     <title>Sales Dashboard | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('/css/dashlite.css?ver=3.1.3')}}">
-    <link id="skin-default" rel="stylesheet" href="{{asset('/css/theme.css?ver=3.1.3')}}">
-    <link rel="stylesheet" href="{{asset('/font-awesome/css/font-awesome.min.css')}}">
-
+    <link id="skin-default" rel="stylesheet" href="{{asset('/css/dashlite.css?ver=3.1.3')}}">
+    <script src="{{asset('/js/bundle.js?ver=3.1.3')}}"></script>
+    <script src="{{asset('/js/scripts.js?ver=3.1.3')}}"></script>
     @livewireStyles
 </head>
 
@@ -54,10 +54,39 @@
                                 <li class="nk-menu-item">
                                     <a href="{{route('users.index')}}" class="nk-menu-link">
                                        <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
-                                       <span class="nk-menu-text">Hướng dẫn sử dụng</span>
+                                       <span class="nk-menu-text">Danh sách Users</span>
                                    </a> 
                                </li><!-- .nk-menu-item -->
-
+                               <li class="nk-menu-item">
+                                <a href="{{route('customers.index')}}" class="nk-menu-link">
+                                   <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
+                                   <span class="nk-menu-text">Danh sách khách hàng</span>
+                               </a> 
+                           </li><!-- .nk-menu-item -->
+                               <li class="nk-menu-heading">
+                                <h6 class="overline-title text-primary-alt">Công việc</h6>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                 <a href="{{route('jobs.index')}}" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="ni ni-money"></em></span>
+                                    <span class="nk-menu-text">Danh sách công việc</span>
+                                </a> 
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-heading">
+                                <h6 class="overline-title text-primary-alt">Báo cáo</h6>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="{{route('users.index')}}" class="nk-menu-link">
+                                   <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
+                                   <span class="nk-menu-text">Lương nhân viên</span>
+                               </a> 
+                           </li><!-- .nk-menu-item -->
+                           <li class="nk-menu-item">
+                            <a href="{{route('users.index')}}" class="nk-menu-link">
+                               <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
+                               <span class="nk-menu-text">Báo cáo công việc</span>
+                           </a> 
+                       </li><!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->
 
                             
@@ -265,15 +294,14 @@
     <!-- select region modal -->
 
     <!-- JavaScript -->
-    <script src="{{asset('/js/bundle.js?ver=3.1.3')}}"></script>
-    <script src="{{asset('/js/scripts.js?ver=3.1.3')}}"></script>
+
     <script src="{{asset('/js/charts/gd-default.js?ver=3.1.3')}}"></script>
     <style>
         /* .nk-sidebar{background: #0c016ef5 !important;} */
         /* .nk-sidebar span{color: #ffffff ;} */
     </style>
     @livewireScripts
-    {{-- @include('partials.customJs') --}}
+    @include('admin::layouts.custom_js')
 </body>
 
 </html>

@@ -2,5 +2,7 @@
     "Admin": true,
     "Users": true,
     "Permissions": true,
-    "Roles": true
+    "Roles": true,
+    "Jobs": true,
+    "Customers": true
 }
