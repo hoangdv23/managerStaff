@@ -52,15 +52,16 @@ class StoragePage extends Component
     public function addUserToJobs($jobId){
         $this->jobId = $jobId;
         $this->jobInfo = $this->jobRepository->find($jobId);
-        // dd($this->jobInfo);
         DB::beginTransaction();
 
         try{
+            $flashMessage= 'Cập nhật người làm thành công';
+            $flashType = 'success';
             $dataCustomer = [
                 'user_id'=> trim($this->user_id),
             ];
             // dd($dataCustomer);
-            $jobUpdate = $this->jobRepository->find($this->jobId,$dataCustomer);
+            $jobUpdate = $this->jobRepository->update($this->jobId,$dataCustomer);
         } catch (\Exception $e) {
             session()->flash('error', __('customer.Customer false edited.'));
             Log::error($e->getMessage() . json_encode($e->getTrace()));
@@ -71,8 +72,8 @@ class StoragePage extends Component
 			$content = $this,
 			$modalId = '#jobs-user',
 			$actionModal = 'hide',
-			$flashMessage = null,
-			$flashType = null
+			$flashMessage = $flashMessage,
+			$flashType = $flashType
 		);
     }
     public function render()

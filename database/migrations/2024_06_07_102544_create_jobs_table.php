@@ -13,7 +13,7 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('jobss', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable(); // Tên Job
             $table->string('customer_id')->nullable(); // Tên Job
@@ -23,7 +23,7 @@ class CreateJobsTable extends Migration
             $table->integer('number_img')->nullable(); // number_img
             $table->string('type')->nullable(); // type
             $table->date('start_date')->nullable(); // start date
-            $table->date('finish_date')->nullable(); // finish date
+            $table->dateTime('finish_date')->nullable(); // finish date
             $table->timestamps();
 
         });

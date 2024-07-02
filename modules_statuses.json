@@ -4,5 +4,7 @@
     "Permissions": true,
     "Roles": true,
     "Jobs": true,
-    "Customers": true
+    "Customers": true,
+    "Report": true,
+    "ReportJob": true
 }

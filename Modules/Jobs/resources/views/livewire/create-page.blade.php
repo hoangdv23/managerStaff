@@ -58,9 +58,12 @@
                         <div class="form-control-wrap">
                             {{-- <input type="text" class="form-control" id="status"> --}}
                             <select name="" class="form-select js-select2" id="status" wire:model.lazy="status">
-                                <option value="999" >Vui lòng chọn</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="999" disabled >Vui lòng chọn</option>
+                                <option value="1">PROCESS</option>
+                                <option value="0">REJECT</option>
+                                <option value="2">DONE</option>
+                                <option value="3">APPROVE</option>
+                                <option value="4">SENT</option>
                             </select>
                         </div>
                     </div>
@@ -68,24 +71,13 @@
                 
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label class="form-label" for="startday">Ngày bắt đầu</label>
-                        <div class="form-control-wrap">
-                            <div class="form-icon form-icon-right">
-                                <em class="icon ni ni-calendar"></em>
-                            </div>
-                            <input type="text" id="startday" autocomplete="off" class="form-control date-picker @error('startday') error @enderror" wire:model.lazy="startday" placeholder="{{ __('Start Day') }}" data-date-format="yyyy-mm-dd">
-                            @error('startday') <span class="invalid">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
                         <label class="form-label" for="stopday">Ngày kết thúc</label>
                         <div class="form-control-wrap">
                             <div class="form-icon form-icon-right">
                                 <em class="icon ni ni-calendar"></em>
                             </div>
-                            <input type="text" id="stopday" autocomplete="off" class="form-control date-picker @error('stopday') error @enderror" wire:model.lazy="stopday" placeholder="{{ __('Stop Day') }}" data-date-format="yyyy-mm-dd">
+                            <input type="datetime-local" class="form-control"  wire:model.lazy="stopday">
+                            {{-- <input type="text" id="stopday" autocomplete="off" class="form-control date-picker @error('stopday') error @enderror" wire:model.lazy="stopday" placeholder="{{ __('Stop Day') }}" data-date-format="yyyy-mm-dd"> --}}
                             @error('stopday') <span class="invalid">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -129,12 +121,6 @@
     window.livewire.on('selectType',()=>{
         initselectTypeDrop();
     });
-    })
-    $(document).ready(function (){
-    //Start At
-        $('#startday').on('change', function (e) {
-            @this.set('startday', e.target.value);
-        });
     })
 
     $(document).ready(function (){

@@ -1,0 +1,11 @@
+{
+    "name": "ReportJob",
+    "alias": "reportjob",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ReportJob\\App\\Providers\\ReportJobServiceProvider"
+    ],
+    "files": []
+}

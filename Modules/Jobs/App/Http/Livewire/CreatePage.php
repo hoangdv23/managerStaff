@@ -44,7 +44,6 @@ class CreatePage extends Component
                 'name'          => trim($this->name),
                 'customer_id'         => trim($this->code),
                 'number_img'         => trim($this->amount),
-                'start_date'      => $this->startday,
                 'finish_date'      => $this->stopday,
                 'status'        => $this->status,
                 'note'        => trim($this->note)

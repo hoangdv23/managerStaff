@@ -17,13 +17,11 @@ use Modules\Customers\Entities\Customer;
 class Jobs_have_type_service extends Model {
     // use Notifiable;
 
-
 	protected $table = 'jobs_have_type_service';
 	public $timestamps = true;
 	protected $fillable = [
 		'type_service_id',
         'job_id',
 	];
-
 
 }

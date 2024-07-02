@@ -15,13 +15,11 @@ use Modules\Jobs\Entities\Type_service;
 use Modules\Jobs\Entities\Jobs_have_type_service;
 
 
-class Job extends Authenticatable {
+class Job extends Model {
     // use Notifiable;
 	use HasFactory;
-	use HasRoles;
-	use HasPermissions;
 
-	protected $table = 'jobs';
+	protected $table = 'jobss';
 	public $timestamps = true;
 	protected $fillable = [
 		'name',

@@ -17,14 +17,23 @@
                 
                 <a href="javascript:void(0);" 
                             wire:click="$dispatch('triggerAddUser', { jobId: {{$id}} })" 
-                   class="text-primary">
+                   class="text-secondary">
                     <em class="icon ni ni-edit-fill"></em>
-                    <span>{{ __('Người làm') }}</span>
+                    <span>{{ __('Editor') }}</span>
+                </a>
+            </li>
+            <li>
+                
+                <a href="javascript:void(0);" 
+                            wire:click="$dispatch('triggerAddMarUser', { jobId: {{$id}} })" 
+                   class="text-fourth">
+                    <em class="icon ni ni-edit-fill"></em>
+                    <span>{{ __('QC') }}</span>
                 </a>
             </li>
             <li>
                 <a href="javascript:void(0);" 
-                   wire:click="$dispatch('triggerDelete', { userId: {{$id }} })" 
+                   wire:click="$dispatch('triggerDelete', { jobId: {{$id }} })" 
                    class="text-danger swal-confirm-delete">
                     <em class="icon ni ni-trash text-danger"></em>
                     <span>{{ __('Delete') }}</span>

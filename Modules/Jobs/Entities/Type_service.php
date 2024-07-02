@@ -4,13 +4,8 @@ namespace Modules\Jobs\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
-use Modules\Users\Entities\User;
-use Modules\Customers\Entities\Customer;
 use Modules\Jobs\Entities\Job;
 
 class Type_service extends Model {
@@ -23,6 +18,7 @@ class Type_service extends Model {
 	public $timestamps = true;
 	protected $fillable = [
 		'name',
+		'color'
 	];
 	public function jobs()
     {

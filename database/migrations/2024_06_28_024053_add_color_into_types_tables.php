@@ -11,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::table('type_services', function (Blueprint $table) {
+            $table->string('color')->nullable()->after('name');
+        });
     }
 
     /**
@@ -19,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('type_services', function (Blueprint $table) {
+            // Xóa cột 'color' nếu rollback migration
+            $table->dropColumn('color');
+        });
     }
 };
