@@ -21,6 +21,9 @@ class Customer extends Model {
 		'status',
         'note',
         'type',
+		'paypal',
+		'country',
+		'timezone',
 	];
 
 

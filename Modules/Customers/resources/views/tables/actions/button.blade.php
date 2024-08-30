@@ -9,6 +9,11 @@
                     class="icon ni ni-edit-fill"></em><span>{{ __('Edit') }}</span>
                 </a></li>
             @endcan
+            @can('customer-update')
+                <li><a href="javascript:void(0);" wire:click="$dispatch('triggerCusType', { customerId : {{ $row->id }} })" class="text-primary"><em
+                    class="icon ni ni-edit-fill"></em><span>{{ __('Type Price') }}</span>
+                </a></li>
+            @endcan
             @can('customer-delete')
                 <li><a href="javascript:void(0);" wire:click="$dispatch('deleteItem',{ customerId : {{ $row->id }} })" class="text-danger swal-confirm-delete">
                     <em class="icon ni ni-trash text-danger"></em><span>{{ __('Delete') }}</span>

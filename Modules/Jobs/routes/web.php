@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Jobs\App\Http\Controllers\JobsController;
 use Modules\Jobs\App\Http\Controllers\TypesController;
+use Modules\Jobs\App\Http\Controllers\DetailController;
+use Modules\Jobs\App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,8 @@ use Modules\Jobs\App\Http\Controllers\TypesController;
 
 Route::group(['middleware'=>'AuthAdmin'], function () {
     Route::resource('jobs', JobsController::class)->names('jobs');
+    Route::resource('jobs-detail', DetailController::class)->names('jobs-detail');
     Route::resource('types', TypesController::class)->names('types');
+    Route::resource('report-jobs', ReportController::class)->names('reportJobs');
 
 });

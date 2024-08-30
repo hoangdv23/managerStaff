@@ -35,62 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- chỉ cần add class name action-select2 vào select rồi gọi js ở dưới -->
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="type">Loại dịch vụ</label>
-                                    <div class="form-control-wrap">
-                                        <select class="form-select action-select2"  id="selectType" 
-                                            data-search="on" wire:model.lazy="type" multiple>
-                                            <option value = "null">Vui lòng chọn giá trị</option> 
-                                            @foreach ($listType_service as $key => $row)
-                                                <option value="{{$row->id}}" wire:key = "dohfojh{!!$key!!}">{{$row->name}}</option> 
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="form-label" for="amount">Số lượng ảnh</label>
-                                    <div class="form-control-wrap">
-                                        {{-- <input type="text" class="form-control" id="email"> --}}
-                                        <input type="text" id="amount" class="form-control @error('amount') error @enderror" wire:model.lazy="amount" placeholder="{{ __('Số lượng ảnh') }}">
-                                                @error('amount') <span class="invalid">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="form-label" for="status">Trạng thái</label>
-                                    <div class="form-control-wrap">
-                                        {{-- <input type="text" class="form-control" id="status"> --}}
-                                        <select name="" class="form-select action-select2" id="status" wire:model.lazy="status">
-                                            <option value="" disabled>Vui lòng chọn</option>
-                                            <option value="1">PROCESS</option>
-                                            <option value="0">REJECT</option>
-                                            <option value="2">DONE</option>
-                                            <option value="3">APPROVE</option>
-                                            <option value="4">SENT</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="stopday">Thời gian kết thúc</label>
-                                    <div class="form-control-wrap">
-                                        {{-- <div class="form-icon form-icon-right">
-                                            <em class="icon ni ni-calendar"></em>
-                                        </div> --}}
-                                        {{-- @json($stopday) --}}
-                                        {{-- <input type="text" id="site-stopday"  class="form-control"  wire:model.lazy="stopday"> --}}
-                                        <input type="datetime-local" class="form-control"  wire:model.lazy="stopday">
-                                        {{-- <input type="text" id="site-stopday" autocomplete="off" class="form-control date-picker @error('stopday') error @enderror" wire:model.lazy="stopday" placeholder="{{ __('Stop Day') }}" data-date-format="yyyy-mm-dd"> --}}
-                                        @error('stopday') <span class="invalid">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="note">Ghi chú</label>

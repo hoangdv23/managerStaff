@@ -19,7 +19,7 @@ use Modules\Jobs\Repositories\JobRepositoryInterface;
 use Modules\Jobs\Repositories\JobRepository;
 class StoragePage extends Component
 {
-    public $user_id,$titleForm,$jobId ;
+    public $user_id,$titleForm,$jobId,$typeId ,$jobInfo ;
 
     protected $customerRepository,$jobRepository;
 
@@ -32,12 +32,12 @@ class StoragePage extends Component
         $this->jobRepository = $jobRepository;
     }
 
-    #[On('triggerAddUser')]
-    public function triggerAddUser($jobId)
+    #[On('triggerEditer')]
+    public function triggerEditer($typeId)
     {
-        $this->jobId = $jobId;
-        $this->jobInfo = $this->jobRepository->find($jobId);
-        // dd();
+        $this->typeId = $typeId;
+        $this->jobInfo = Jobs_have_type_service::find($typeId);
+        // dd($typeId);
         if($this->jobInfo){
             $this->user_id =  $this->jobInfo->user_id;
         }
@@ -49,9 +49,10 @@ class StoragePage extends Component
 			$flashType = null
 		);
     }
-    public function addUserToJobs($jobId){
-        $this->jobId = $jobId;
-        $this->jobInfo = $this->jobRepository->find($jobId);
+    public function addUserToJobs($typeId){
+        $this->typeId = $typeId;
+        // dd($this->typeId );
+        $this->jobInfo = Jobs_have_type_service::find($this->typeId);
         DB::beginTransaction();
 
         try{
@@ -61,7 +62,7 @@ class StoragePage extends Component
                 'user_id'=> trim($this->user_id),
             ];
             // dd($dataCustomer);
-            $jobUpdate = $this->jobRepository->update($this->jobId,$dataCustomer);
+            $jobUpdate = $this->jobInfo->update($dataCustomer);
         } catch (\Exception $e) {
             session()->flash('error', __('customer.Customer false edited.'));
             Log::error($e->getMessage() . json_encode($e->getTrace()));
@@ -79,7 +80,7 @@ class StoragePage extends Component
     public function render()
     {
         $this->titleForm = 'Thêm người nhận job';
-        $listUser = User::get();
+        $listUser = User::where('id','<>','1')->get();
         return view('jobs::livewire.storage-page',[
             'listUser' => $listUser
         ]);

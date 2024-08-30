@@ -22,6 +22,21 @@ class Jobs_have_type_service extends Model {
 	protected $fillable = [
 		'type_service_id',
         'job_id',
+		'amount',
+		'fixed_link',
+		'edited_link',
+		'checked_link',
+		'user_id',
+		'deadline',
+		'status',
+		'marketing_user_id',
+		'price',
+		'customer_id',
+		'total_price',
+		'qc_price',
+		'total_qc_price',
+		'editor_price',
+		'total_editor_price',
 	];
 
 }

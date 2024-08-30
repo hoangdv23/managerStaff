@@ -78,8 +78,20 @@
                                     <span class="nk-menu-text">Danh sách công việc</span>
                                 </a> 
                             </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="{{route('jobs-detail.index')}}" class="nk-menu-link">
+                                   <span class="nk-menu-icon"><em class="ni ni-money"></em></span>
+                                   <span class="nk-menu-text">Chi tiết công việc</span>
+                               </a> 
+                           </li><!-- .nk-menu-item -->
                             <li class="nk-menu-heading">
                                 <h6 class="overline-title text-primary-alt">Báo cáo</h6>
+                            </li><!-- .nk-menu-item -->
+                            <li class="nk-menu-item">
+                                <a href="{{route('reportJobs.index')}}" class="nk-menu-link">
+                                   <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
+                                   <span class="nk-menu-text">Báo cáo Công việc</span>
+                               </a> 
                             </li><!-- .nk-menu-item -->
                             <li class="nk-menu-item">
                                 <a href="{{route('users.index')}}" class="nk-menu-link">
@@ -87,12 +99,7 @@
                                    <span class="nk-menu-text">Lương nhân viên</span>
                                </a> 
                            </li><!-- .nk-menu-item -->
-                           <li class="nk-menu-item">
-                            <a href="{{route('reportjob.index')}}" class="nk-menu-link">
-                               <span class="nk-menu-icon"><em class="ni ni-note-add-c "></em></span>
-                               <span class="nk-menu-text">Báo cáo Công việc</span>
-                           </a> 
-                            </li><!-- .nk-menu-item -->
+                           
                             </ul><!-- .nk-menu -->
 
                             

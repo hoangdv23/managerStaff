@@ -6,9 +6,9 @@
                     <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Danh sách Jobs</h3>
+                                <h3 class="nk-block-title page-title">Danh sách Type Jobs</h3>
                                 <div class="nk-block-des text-soft">
-                                    <p>Tổng số <b>{{ number_format($listJobs->links()->paginator->total(), 0) }}</b> jobs.</p>
+                                    <p>Tổng số <b>{{ number_format($listJobs->links()->paginator->total(), 0) }}</b> loại jobs.</p>
                                 </div>
                             </div>
                             <div class="nk-block-head-content">
@@ -17,7 +17,7 @@
                                         data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
-                                            <li>
+                                            {{-- <li>
                                                 <div class="form-control-wrap">
                                                     <div class="form-icon form-icon-right">
                                                         <em class="icon ni ni-search"></em>
@@ -26,7 +26,7 @@
                                                         class="form-control" id="default-04"
                                                         placeholder="Từ khóa tìm kiếm" autocomplete="off">
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <div class="drodown">
                                                     <a href="javascript:void(0);"
@@ -108,6 +108,7 @@
                                 <table class="nowrap table">
                                     <thead>
                                         <tr>
+                                            <th>Ngày tạo</th>
                                             <th>Name</th>
                                             <th>Khách hàng</th>
                                             <th>Loại dịch vụ</th>
@@ -128,36 +129,36 @@
                                         {{-- @dd($listJob) --}}
                                         @foreach ($listJobs as $listJob)
                                         <tr>
-                                            <td>{{ $listJob['name']}}</td>
-                                            <td >{{ Modules\Customers\Entities\Customer::where('id',$listJob['customer_id'])->value('name')}}</td>
-                                            <td>
-                                                @foreach ($listJob->types as $type)
-                                                <span style="color: {{ $type->color }} !important;">{{ $type->name }}</span><br>
-                                                @endforeach
+                                            <td>{{\Carbon\Carbon::parse($listJob['created_at'])->format('d/m/y')}}</td>
+                                            <td>{{ \Modules\Jobs\Entities\Job::where('id',$listJob['job_id'])->value('name')}}</td>
+                                            <td >{{\Modules\Customers\Entities\Customer::where('id', $listJob['customer_id'])->value('name');}}</td>
+                                            <td >
+                                                <span class="badge rounded-pill badge-sm " style="background-color: {{colorType($listJob['type_service_id'])}} !important">
+                                                    {{ \Modules\Jobs\Entities\Type_service::where('id',$listJob['type_service_id'])->value('name')}}
+                                                </span>
                                             </td>
-                                            {{-- <td style="color: {{$listJob->types->pluck('color')}} !important">{!! $listJob->types->pluck('name')->implode('<br>') !!}</td> --}}
-                                            <td>{{ $listJob['number_img']}}</td>
+                                            <td>{{ $listJob['amount']}}</td>
                                             <td>{{ Modules\Users\Entities\User::where('id', $listJob['user_id'])->value('name') ?? 'Chưa phân' }}</td>
                                             <td>{{ Modules\Users\Entities\User::where('id', $listJob['marketing_user_id'])->value('name') ?? 'Chưa phân' }}</td>
-                                            {{-- <td>{{ $listJob['start_date']}}</td> --}}
                                             <td>
                                                 @if ($listJob['status'] == '1')
-                                                    <span class="badge badge-dot bg-warning text-uppercase">PROCESS</span>
+                                                
+                                                    <span class="badge  bg-warning text-uppercase">PROCESS</span>
                                                 @elseif ($listJob['status'] == '0')
-                                                    <span class="badge badge-dot bg-danger text-uppercase">REJECT</span>
+                                                    <span class="badge  bg-danger text-uppercase">REJECT</span>
                                                 @elseif ($listJob['status'] == '2')
-                                                <span class="badge badge-dot bg-success text-uppercase">PROCDONESS</span>
+                                                <span class="badge  bg-success text-uppercase">DONE</span>
                                                     
                                                 @elseif ($listJob['status'] == '3')
-                                                <span class="badge badge-dot bg-info text-uppercase">APPROVE</span>
+                                                <span class="badge  bg-info text-uppercase">APPROVE</span>
                                                 @elseif ($listJob['status'] == '4')
-                                                <span class="badge badge-dot bg-dark text-uppercase">SENT</span>
+                                                <span class="badge  bg-dark text-uppercase">SENT</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if ($listJob['fixed_link'] !== null)
                                                     {{-- Nếu fixed_link có giá trị, hiển thị một liên kết --}}
-                                                    <a href="{{ $listJob['fixed_link'] }}">Original Link</a>
+                                                    <a href="{{ $listJob['fixed_link'] }}" target="_blank">Original</a>
                                                 @else
                                                     {{-- Nếu không có fixed_link, hiển thị văn bản --}}
                                                     Chưa có
@@ -166,7 +167,7 @@
                                             <td>
                                                 @if ($listJob['edited_link'] !== null)
                                                     {{-- Nếu fixed_link có giá trị, hiển thị một liên kết --}}
-                                                    <a href="{{ $listJob['edited_link']}}">Incomplete Link</a>
+                                                    <a href="{{ $listJob['edited_link']}}" target="_blank">Incomplete</a>
                                                 @else
                                                     {{-- Nếu không có fixed_link, hiển thị văn bản --}}
                                                     Chưa có
@@ -175,17 +176,17 @@
                                             <td>
                                                 @if ($listJob['checked_link'] !== null)
                                                     {{-- Nếu fixed_link có giá trị, hiển thị một liên kết --}}
-                                                    <a href="{{ $listJob['checked_link'] }}">Compeled Link</a>
+                                                    <a href="{{ $listJob['checked_link'] }}" target="_blank">Compeled</a>
                                                 @else
                                                     {{-- Nếu không có fixed_link, hiển thị văn bản --}}
                                                     Chưa có
                                                 @endif
                                             </td>
                                             <td>
-                                                {{ \Carbon\Carbon::parse($listJob['finish_date'])->format('H:i d/m/Y') }}
+                                                {{ \Carbon\Carbon::parse($listJob['deadline'])->format('H:i d/m/Y') }}
                                             </td>
                                             <td>
-                                                @include('jobs::tables.actions.button', ['id' => $listJob['id']])
+                                                @include('jobs::tables.actions.button_detail', ['id' => $listJob['id']])
                                             </td>
                                         </tr>
                                         @endforeach

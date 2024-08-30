@@ -83,24 +83,11 @@ class EditPage extends Component
             $dataCustomer = [
                 'name'          => trim($this->name),
                 'customer_id'         => trim($this->code),
-                'number_img'         => trim($this->amount),
-                'start_date'      => $this->startday,
-                'finish_date'      => $this->stopday,
-                'status'        => $this->status,
                 'note'        => trim($this->note)
             ];
+            // dd($dataCustomer);
             $jobUpdate = $this->jobRepository->update($this->jobId,$dataCustomer);
-
-            if($this->type_old != $this->type){ // check xem type cũ có khác type mới k khác thì up date
-                Jobs_have_type_service::where('job_id',$jobUpdate)->delete(); // xóa type cũ
-                foreach ($this->type as $typeId) {
-                    // remove all type cũ đi rồi create lại
-                    Jobs_have_type_service::create([
-                        'type_service_id' => $typeId,
-                        'job_id' => $jobUpdate->id
-                    ]); 
-                } 
-            }
+            Jobs_have_type_service::where('job_id', $this->jobId)->update(['customer_id' => trim($this->code)]);
         } catch (\Exception $e) {
             session()->flash('error', __('customer.Customer false edited.'));
             Log::error($e->getMessage() . json_encode($e->getTrace()));

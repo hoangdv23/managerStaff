@@ -34,6 +34,7 @@
                             <div class="card-inner" >
                                 <livewire:customers::index-page />
                                 <livewire:customers::edit-page />
+                                <livewire:customers::cus-type-service-page />
                                 {{-- <livewire:users::storage-page/> --}}
                             </div>
                             </div>

@@ -20,7 +20,7 @@ use Modules\Jobs\Repositories\JobRepository;
 
 class AddMarketingUserPage extends Component
 {
-    public $titleForm,$jobId;
+    public $titleForm,$typeId;
 
     public $user_id;
 
@@ -35,13 +35,13 @@ class AddMarketingUserPage extends Component
         $this->jobRepository = $jobRepository;
     }
 
-    #[On('triggerAddMarUser')]
-    public function triggerAddMarUser($jobId){
-        $this->jobId = $jobId;
-        $this->jobInfo = $this->jobRepository->find($jobId);
+    #[On('triggerQC')]
+    public function triggerQC($typeId){
+        $this->typeId = $typeId;
+        $this->jobInfo = Jobs_have_type_service::find($typeId);
 
         if($this->jobInfo){
-            $this->user_id =  $this->jobInfo->user_id;
+            $this->marketing_user_id =  $this->jobInfo->marketing_user_id;
         }
         action_modal(
 			$content = $this,
@@ -51,10 +51,10 @@ class AddMarketingUserPage extends Component
 			$flashType = null
 		);
     }
-    public function addMarToJobs($jobId)
+    public function addMarToJobs($typeId)
     {
-        $this->jobId = $jobId;
-        $this->jobInfo = $this->jobRepository->find($jobId);
+        $this->typeId = $typeId;
+        $this->jobInfo = Jobs_have_type_service::find($typeId);
         
         try{
             $flashMessage= 'Thêm người marketing thành công';
@@ -63,7 +63,7 @@ class AddMarketingUserPage extends Component
                 'marketing_user_id'=> trim($this->user_id),
             ];
             // dd($dataCustomer);
-            $jobUpdate = $this->jobRepository->update($this->jobId,$dataCustomer);
+            $jobUpdate = $this->jobInfo->update($dataCustomer);
         } catch (\Exception $e) {
             session()->flash('error', __('Thêm người marketing thất bại'));
             Log::error($e->getMessage() . json_encode($e->getTrace()));
@@ -81,7 +81,7 @@ class AddMarketingUserPage extends Component
     public function render()
     {
         $this->titleForm = 'Thêm người quảng cáo';
-        $listUser = User::get();
+        $listUser = User::where('id','<>','1')->get();
         return view('jobs::livewire.add-marketing-user-page',[
             'listUser' => $listUser
         ]);

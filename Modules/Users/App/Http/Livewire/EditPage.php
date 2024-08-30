@@ -6,13 +6,14 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 use Modules\Users\Repositories\UserRepositoryInterface;
 use Livewire\Attributes\On; 
 use Modules\Users\Entities\User;
 class EditPage extends Component
 {
-    public $name, $username, $phone, $email, $show_all_record, $roles = [],$userid= [];
+    public $name, $username, $phone, $email, $show_all_record,$status, $roles = [],$userid= [];
 	public $editMode,$listRole,$titleForm;
 	protected $userRepository;
 	private $userInfo;
@@ -23,11 +24,19 @@ class EditPage extends Component
     public function boot(UserRepositoryInterface $userRepository) {
 		$this->userRepository = $userRepository;
 	}
-
+    public function mount()
+    {
+        $this->listRole = Role::where('name', '!=', 'super-administrator')->get()->pluck('name');
+    }
+    public function hydrate()
+    {
+        $this->dispatch('selectRole');
+    }
     #[On('triggerEdit')]
     public function triggerEdit( $userId)
     {
         $this->userId = $userId;
+        $listRoles = $this->roles ?? [];
         $this->userInfo = $this->userRepository->find($userId);
         // dd($this->userInfo);
         if($this->userInfo){
@@ -50,6 +59,7 @@ class EditPage extends Component
     {
         $this->userId= $userId;
         $this->userInfo = $this->userRepository->find($userId);
+        $listRoles = $this->roles ?? [];
         DB::beginTransaction();
         try {
 			$flashType = 'success';
@@ -59,9 +69,14 @@ class EditPage extends Component
                 'username' => trim($this->username),
                 'phone' => trim($this->phone),
                 'email' => trim($this->email),
+                'status' => trim($this->status),
                 'show_all_record' => $this->show_all_record,
             ];
+            // dd($dataEditClient);
+
             $userUpdate = $this->userRepository->update($this->userId, $dataEditClient);
+            $userUpdate->syncRoles($listRoles);
+
         }catch (\Exception $e) {
 			$flashType = 'error';
 			$flashMessage = 'Chỉnh sửa tài khoản không thành công.';

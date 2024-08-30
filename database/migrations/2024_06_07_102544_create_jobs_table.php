@@ -18,12 +18,10 @@ class CreateJobsTable extends Migration
             $table->string('name')->nullable(); // Tên Job
             $table->string('customer_id')->nullable(); // Tên Job
             $table->string('status')->nullable(); // Trạng Thái
-            $table->unsignedBigInteger('user_id')->nullable(); // user_id
-            $table->unsignedBigInteger('marketing_user_id')->nullable(); // marketing_user_id
-            $table->integer('number_img')->nullable(); // number_img
             $table->string('type')->nullable(); // type
-            $table->date('start_date')->nullable(); // start date
+            $table->dateTime('start_date')->nullable(); // start date
             $table->dateTime('finish_date')->nullable(); // finish date
+            $table->string('note')->nullable(); // finish date
             $table->timestamps();
 
         });
@@ -36,6 +34,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('jobss');
     }
 }

@@ -12,9 +12,17 @@ class JobsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('AuthAdmin');
+        $this->middleware('permission:job-index', ['only' => ['index']]);
+        $this->middleware('permission:job-create', ['only' => ['create']]);
+        $this->middleware('permission:job-update', ['only' => ['update']]);
+        $this->middleware('permission:job-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
-        return view('jobs::index');
+        return view('jobs::jobs');
     }
 
     /**

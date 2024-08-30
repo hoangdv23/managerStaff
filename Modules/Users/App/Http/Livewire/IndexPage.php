@@ -24,6 +24,7 @@ class IndexPage extends DataTableComponent
 {
     public $roles = [],$editMode;
     protected $userRepository;
+    
     protected $model = User::class;
     protected $userInfo,$iduser;
 
@@ -67,7 +68,7 @@ class IndexPage extends DataTableComponent
         $userInfo = getUserInfo();
 
         $iduser = $userInfo['id'];
-        $users = User::query();
+        $users = User::query()->where('users.id', '<>', 1);
         $roles = Role::where('name', '!=', 'super-administrator')->get()->pluck('name');
         return $users;
     }
@@ -79,6 +80,8 @@ class IndexPage extends DataTableComponent
             Column::make(__('Username'), 'username')->sortable()->searchable(),   
             Column::make(__('Email'), 'email')->sortable()->searchable(), 
             Column::make(__('Số điện thoại'), 'phone')->sortable()->searchable(), 
+            Column::make(__('Giá Editor'), 'phone')->sortable()->searchable(), 
+            Column::make(__('Giá QC'), 'phone')->sortable()->searchable(), 
             Column::make('Vai trò')
                 ->label(fn($row) => $row->roles->pluck('name')->implode(', ')),
             BooleanColumn::make(__('Status'), 'status')->sortable(),
@@ -132,17 +135,15 @@ class IndexPage extends DataTableComponent
     public function activate()
     {
         User::whereIn('id', $this->getSelected())->update(['status' => true]);
-        //Delete cache
-       # User::flushQueryCache();
         $this->clearSelected();
     }
 
     public function deactivate()
     {
         User::whereIn('id', $this->getSelected())->update(['status' => false]);
-        //Delete cache
-     #   User::flushQueryCache();
+
         $this->clearSelected();
+
     }
 
     public function deleteSelected()

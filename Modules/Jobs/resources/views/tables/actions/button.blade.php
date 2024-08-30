@@ -14,24 +14,6 @@
                 </a>
             </li>
             <li>
-                
-                <a href="javascript:void(0);" 
-                            wire:click="$dispatch('triggerAddUser', { jobId: {{$id}} })" 
-                   class="text-secondary">
-                    <em class="icon ni ni-edit-fill"></em>
-                    <span>{{ __('Editor') }}</span>
-                </a>
-            </li>
-            <li>
-                
-                <a href="javascript:void(0);" 
-                            wire:click="$dispatch('triggerAddMarUser', { jobId: {{$id}} })" 
-                   class="text-fourth">
-                    <em class="icon ni ni-edit-fill"></em>
-                    <span>{{ __('QC') }}</span>
-                </a>
-            </li>
-            <li>
                 <a href="javascript:void(0);" 
                    wire:click="$dispatch('triggerDelete', { jobId: {{$id }} })" 
                    class="text-danger swal-confirm-delete">

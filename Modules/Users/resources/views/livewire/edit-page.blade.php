@@ -49,7 +49,22 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="email">Trạng thái</label>
+                                    <label class="form-label" for="roles">Chức vụ</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-select js-select2" id="selectRole" wire:model.lazy="roles"
+                                        data-placeholder="{{ __('role.Select Roles') }}">
+                                            <option value="">Vui lòng chọn</option>
+                                        @foreach ($listRole as $k => $item)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                        @error('roles') <span class="invalid">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="status">Trạng thái</label>
                                     <div class="form-control-wrap">
                                         <select name="status" id="status" class="form-control @error('status') error @enderror" wire:model.lazy="status">
                                             <option value="0">Inactive</option>
@@ -73,12 +88,33 @@
                             </div>
                         </div>
                     </form>
-                    </div><!-- .modal-body -->
-                    </div><!-- .modal-content -->
-                    </div><!-- .modal-dialog -->
-                    </div><!-- .modal -->
-                    <!-- select region modal -->
-    
-                    
-    
-                </div>
+    </div><!-- .modal-body -->
+    </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+    </div><!-- .modal -->
+    <!-- select region modal -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //Permission
+            window.initSelectRoleDrop = () => {
+                $('#selectRole').select2({
+                    allowClear: true
+                });
+            }
+            initSelectRoleDrop();
+            $('#selectRole').on('change', function(e) {
+                var dataRole = $('#selectRole').select2("val");
+                @this.set('roles', dataRole);
+            });
+            window.livewire.on('selectRole', () => {
+                initSelectRoleDrop();
+            });
+
+
+
+
+        });
+    </script>
+
+</div>

@@ -34,27 +34,9 @@ class CreatePage extends Component
 	//Use boot correct than mount. Check Class Hooks Livewire
 	public function boot(RoleRepositoryInterface $roleRepository) {
 		$this->roleRepository = $roleRepository;
-
+		// dd($this->roleRepository);
 	}
 
-	protected function rules() {
-		return [
-			'name' => 'required|min:3',
-		];
-	}
-
-	protected function messages() {
-		return [
-			'name.required' => __('The :attribute cannot be empty.'),
-			'name.min' => __('The :attribute must be at least :min characters.'),
-		];
-	}
-
-	protected function validationAttributes() {
-		return [
-			'name' => __('Name'),
-		];
-	}
 
 	public function updatedSelectAll($value) {
 		if ($value) {
@@ -65,14 +47,12 @@ class CreatePage extends Component
 	}
 
 	public function updatedSelectedPermissions($value) {
+		
 		$this->selectAll = true;
+		// dd($this->selectAll);
 	}
 
 	public function store() {
-
-
-		$this->validate();
-
 		$data = [
 			'name' => $this->name,
 			'guard_name' => 'web',

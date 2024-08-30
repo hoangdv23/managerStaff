@@ -31,11 +31,17 @@
                     </div>
                 </div>
                 <div class="nk-block">
-                    <livewire:jobs::type-page />
-                    <livewire:jobs::types.edit-page />
+                        <div class="card card-bordered card-stretch">
+                            <div class="card-inner-group">
+                                <div class="card-inner" >
+                                    <livewire:jobs::type-page />
+                                    <livewire:jobs::types.edit-page />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

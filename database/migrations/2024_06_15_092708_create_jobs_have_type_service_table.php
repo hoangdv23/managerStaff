@@ -19,7 +19,7 @@ return new class extends Migration
 
             // Khai báo khóa ngoại cho type_service_id và job_id
             $table->foreign('type_service_id')->references('id')->on('type_services')->onDelete('cascade');
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->foreign('job_id')->references('id')->on('jobss')->onDelete('cascade');
         });
     }
 

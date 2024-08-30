@@ -297,6 +297,162 @@ class PermisstionTableSeeder extends Seeder
                 'guard_name' => 'web',
             ]);
         }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-editor',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-editor',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa editor',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-QC',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-QC',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa QC',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-process',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-process',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa trạng thái Status thành PROCESS',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-reject',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-reject',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa trạng thái Status thành REJECT',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-done',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-done',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa trạng thái Status thành DONE',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-approve',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-approve',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa trạng thái Status thành APPROVE',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-sent',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-sent',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa trạng thái Status thành SENT',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-receive',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-receive',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép click để nhận job',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-fixedLink',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-fixedLink',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa link gốc',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-fixedLink',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-fixedLink',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa link gốc',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-editedLink',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-editedLink',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép Editor up link',
+                'guard_name' => 'web',
+            ]);
+        }
+        $check_permission = \DB::table('permissions')->where([
+            'name' => 'job-checkedLink',
+            'module' => 'Quản lý công việc',
+            'guard_name' => 'web',
+        ])->first();
+        if (!$check_permission) {
+            \DB::table('permissions')->insert([
+                'name' => 'job-checkedLink',
+                'module' => 'Quản lý công việc',
+                'description' => 'Cho phép chỉnh sửa link Hoàn thành',
+                'guard_name' => 'web',
+            ]);
+        }
         
     }
     

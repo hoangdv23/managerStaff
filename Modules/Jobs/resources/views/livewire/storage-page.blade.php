@@ -9,7 +9,7 @@
                     </a>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="addUserToJobs({{ $jobId }})">
+                    <form wire:submit.prevent="addUserToJobs({{ $typeId }})">
                         <div class="row gy-3">
                             <div class="col-md-12">
                                 <div class="form-group">

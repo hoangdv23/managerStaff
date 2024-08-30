@@ -25,16 +25,10 @@ class Job extends Model {
 		'name',
 		'customer_id',
 		'status',
-		'user_id',
-		'marketing_user_id',
-        'number_img',
         'type',
 		'note',
         'start_date',
-        'finish_date',
-		'fixed_link',
-		'edited_link',
-		'checked_link',
+        'finish_date'
 	];
 
 	// public function customer(): BelongsTo

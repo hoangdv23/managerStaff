@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="form-group">
                         <label class="form-label" for="type">Loại dịch vụ</label>
                         <div class="form-control-wrap" wire:ignore>
@@ -38,6 +38,9 @@
                                 @endforeach
 
                             </select>
+                            @if(session()->has('message'))
+                                <div style="color: red; text-align: center;">{{ session('message') }}</div>
+                            @endif
                             {{-- @json($type) --}}
                         </div>
                     </div>
@@ -47,18 +50,22 @@
                         <label class="form-label" for="amount">Số lượng ảnh</label>
                         <div class="form-control-wrap">
                             {{-- <input type="text" class="form-control" id="email"> --}}
-                            <input type="text" id="amount" class="form-control @error('amount') error @enderror" wire:model.lazy="amount" placeholder="{{ __('Số lượng ảnh') }}">
+                            <input type="text" id="amount" class="form-control @error('amount') error @enderror" wire:model.lazy="amount" placeholder="{{ __('Số lượng mỗi loại') }}">
                                     @error('amount') <span class="invalid">{{ $message }}</span> @enderror
                         </div>
                     </div>
                 </div>
+
+
+
+                
                 <div class="col-lg-3">
                     <div class="form-group">
                         <label class="form-label" for="status">Trạng thái</label>
                         <div class="form-control-wrap">
                             {{-- <input type="text" class="form-control" id="status"> --}}
                             <select name="" class="form-select js-select2" id="status" wire:model.lazy="status">
-                                <option value="999" disabled >Vui lòng chọn</option>
+                                <option value="999">Vui lòng chọn</option>
                                 <option value="1">PROCESS</option>
                                 <option value="0">REJECT</option>
                                 <option value="2">DONE</option>
@@ -69,13 +76,10 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="form-group">
-                        <label class="form-label" for="stopday">Ngày kết thúc</label>
+                        <label class="form-label" for="stopday">Dealine</label>
                         <div class="form-control-wrap">
-                            <div class="form-icon form-icon-right">
-                                <em class="icon ni ni-calendar"></em>
-                            </div>
                             <input type="datetime-local" class="form-control"  wire:model.lazy="stopday">
                             {{-- <input type="text" id="stopday" autocomplete="off" class="form-control date-picker @error('stopday') error @enderror" wire:model.lazy="stopday" placeholder="{{ __('Stop Day') }}" data-date-format="yyyy-mm-dd"> --}}
                             @error('stopday') <span class="invalid">{{ $message }}</span> @enderror

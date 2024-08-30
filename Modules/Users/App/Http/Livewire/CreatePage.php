@@ -24,7 +24,7 @@ class CreatePage extends Component
 
 
     public function mount() {
-		$this->listRole = Role::where('name', '!=', 'super-admin')->get()->pluck('name');
+		$this->listRole = Role::where('name', '!=', 'super-administrator')->get()->pluck('name');
 		$this->userInfo = getUserInfo();
 	}
     public function boot(

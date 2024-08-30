@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Modules\Jobs\Repositories\JobRepositoryInterface;
 use Modules\Jobs\Repositories\JobRepository;
 use Modules\Jobs\Entities\Job;
+use Modules\Jobs\Entities\Jobs_have_type_service;
 use Modules\Users\Entities\User;
 
 class IndexPage extends Component
@@ -37,14 +38,14 @@ class IndexPage extends Component
     }
 	
 	#[On('triggerDelete')]
-    public function triggerDelete($jobId)
+    public function triggerDelete($typeId)
     {
-        $this->jobId = $jobId;
-        $saleStatusDeleteInfo = Job::where('id', $jobId)->first();
+        $this->typeId = $typeId;
+        $saleStatusDeleteInfo = Jobs_have_type_service::where('id', $typeId)->first();
         
         if ($saleStatusDeleteInfo) {
-            $saleStatusDeleteInfo->delete();
             $this->dispatch('msgSuccess', __('Successfully deleted.'));
+            $saleStatusDeleteInfo->delete();
         } else {
             session()->flash('msgError', __('Failed to delete.'));
         }
@@ -72,15 +73,7 @@ class IndexPage extends Component
     {
 		// $userInfo = getUserInfo();
 
-        $jobsList = Job::select('*');
-        if($this->search){
-            $jobsList = Job::where('name', 'like', '%'. $this->search .'%');
-        }
-        if($this->selected_editor_value !== null){
-            $jobsList = Job::where('user_id',$this->selected_editor_value);
-        }if($this->selected_QC_value !== null){
-            $jobsList = Job::where('marketing_user_id',$this->selected_QC_value);
-        }
+        $jobsList = Jobs_have_type_service::select('*');
         $result = $jobsList->paginate(10);
         return view('jobs::livewire.index-page',[
 			'listJobs' => $result,
